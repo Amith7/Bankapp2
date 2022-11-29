@@ -43,6 +43,9 @@ body {
     height: 50px;
     line-height: 60px;
     border-radius: 8px;
+    font-size: medium;
+    text-align: center;
+
     
   }
   
@@ -62,6 +65,7 @@ body {
     display: inline-block;
     cursor: pointer;
     text-align: center;
+
   }
   input[type="submit"]:hover {
     background-color: #329dd5;

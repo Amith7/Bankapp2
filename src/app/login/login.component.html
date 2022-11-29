@@ -3,17 +3,17 @@
     <h6>{{aim}}</h6>
     <div id="login-form">
       <p>
-      <input  #acno type="number" id="accno" [placeholder]="account" required>
+      <input  [(ngModel)]="acno" type="number" id="accno" [placeholder]="account" required>
       </p>
       <p>
-      <input #pswd type="password" id="Password" name="Password" placeholder="Password" required>
+      <input  [(ngModel)]="pswd" type="password" id="Pswd" name="Password" placeholder="Enter Your Password Here" required>
       </p>
       <p>
-      <input type="submit" id="login" value="Login" (click)="login(acno,pswd)">
+      <input type="submit" id="login" value="Login" (click)="login()">
       </p>
   </div>
     <div id="create-account-wrap">
-      <p>Forgot Password? or <a href="#">Sign Up</a><p>
+      <p>Forgot Password? or <a routerLink="register">Sign Up</a><p>
     </div>
   </div>
   

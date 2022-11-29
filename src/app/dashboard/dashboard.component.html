@@ -1,0 +1,68 @@
+<div>
+    <button type="button" class="btn"><a routerLink="/register">Log Out</a></button>
+
+    <h1>Welcome {{user}}</h1>
+    <a routerLink="/transaction">Transaction History</a>
+</div>
+
+<div class="parent">
+    <div class="child">
+        <div id="login-form-wrap">
+            <h2>Deposite</h2>
+            <div id="login-form">
+
+                <p>
+                    <input [(ngModel)]="acno" type="number" id="depo_accno" placeholder=" Enter Your Account Number"
+                        required>
+                </p>
+
+                <p>
+                    <input [(ngModel)]="pswd" type="password" id="depo_Password" name="Password"
+                        placeholder=" Enter Your Password" required>
+                </p>
+                <p>
+                    <input [(ngModel)]="amount" type="text" id="depo_amount" placeholder="Enter Your Amount" required>
+                </p>
+
+                <p>
+                    <input type="submit" id="deposite " (click)="deposite()" value="Deposite">
+                </p>
+            </div>
+            <div id="create-account-wrap">
+            </div>
+
+
+        </div>
+
+    </div>
+    <div class="child">
+        <div id="login-form-wrap">
+            <h2>Withdraw</h2>
+            <div id="login-form">
+
+                <p>
+                    <input [(ngModel)]="acno1" type="number" id="with_accno" placeholder=" Enter Your Account Number"
+                        required>
+                </p>
+
+                <p>
+                    <input [(ngModel)]="pswd1" type="password" id="with_Password" name="Password"
+                        placeholder=" Enter Your Password" required>
+                </p>
+                <p>
+                    <input [(ngModel)]="amount1" type="text" id="with_ammount" placeholder="Enter Your Amount" required>
+                </p>
+
+                <p>
+                    <input type="submit" id="Widthdraw " (click)="Withdraw()" value="Widthdraw">
+                </p>
+            </div>
+            <div id="create-account-wrap">
+            </div>
+
+
+
+        </div>
+
+    </div>
+</div>

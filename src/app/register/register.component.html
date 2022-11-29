@@ -1,23 +1,26 @@
 <div id="login-form-wrap">
     <h2>Register page</h2>
-    <div id="login-form">
-        <p>
-            <input type="text" id="uname" placeholder="Enter Name" required>
-        </p>
+    <form [formGroup]="registerForm">
+        <div id="login-form">
+            <p>
+                <input formControlName="uname" type="text" id="uname" placeholder="Enter Your Name" required>
+            </p>
 
-        <p>
-            <input type="number" id="accno" placeholder="AccountNumber" required>
-        </p>
+            <p>
+                <input formControlName="acno" type="number" id="accno" placeholder=" Enter Your Account Number" required>
+            </p>
 
-        <p>
-            <input type="password" id="Password" name="Password" placeholder="Password" required>
-        </p>
-        <p>
-            <input type="submit" id="register " onclick="reg()" value="register">
-        </p>
-    </div>
+            <p>
+                <input formControlName="pswd" type="password" id="Password" name="Password"
+                    placeholder=" Enter Your Password" required>
+            </p>
+            <p>
+                <input type="submit" id="register " (click)="register()" value="register">
+            </p>
+        </div>
+    </form>
     <div id="create-account-wrap">
-        <p> <a href="#">Sign in</a>
+        <p> <a routerLink="register">Sign in</a>
         <p>
     </div>
 
