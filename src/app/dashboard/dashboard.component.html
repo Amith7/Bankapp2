@@ -1,32 +1,53 @@
 <div>
-    <button type="button" class="btn"><a routerLink="/register">Log Out</a></button>
+    <button type="button" class="btn" (click)="delete()">Delete</button>
+    <button type="button" class="btn1 " (click)="logout()">Log Out</button>
 
     <h1>Welcome {{user}}</h1>
     <a routerLink="/transaction">Transaction History</a>
-</div>
 
+</div>
+<h4>System Date and Time :{{sdate | date:'short'}}</h4>
+<!-- child selector -->
+<app-delete [item]="acno" (onCancel)="onCancel()"></app-delete>
 <div class="parent">
-    <div class="child">
+    <div class="child" [ngClass]="acno? 'style1':''">
         <div id="login-form-wrap">
             <h2>Deposite</h2>
             <div id="login-form">
+                <form [formGroup]="logForm">
+                    <p>
+                        <input formControlName="acno" type="text" id="depo_accno"
+                            placeholder=" Enter Your Account Number" required>
+                    </p>
+                    <div class="div" *ngIf="this.logForm.get('acno')?.errors && this.logForm.get('acno')?.touched"
+                        style="color: red;">
+                        <p>Invalid Account Number</p>
+                    </div>
 
-                <p>
-                    <input [(ngModel)]="acno" type="number" id="depo_accno" placeholder=" Enter Your Account Number"
-                        required>
-                </p>
 
-                <p>
-                    <input [(ngModel)]="pswd" type="password" id="depo_Password" name="Password"
-                        placeholder=" Enter Your Password" required>
-                </p>
-                <p>
-                    <input [(ngModel)]="amount" type="text" id="depo_amount" placeholder="Enter Your Amount" required>
-                </p>
+                    <p>
+                        <input formControlName="pswd" type="password" id="depo_Password" name="Password"
+                            placeholder=" Enter Your Password" required>
+                    </p>
+                    <div class="div" *ngIf="this.logForm.get('pswd')?.errors && this.logForm.get('pswd')?.touched"
+                        style="color: red;">
+                        <p>Invalid Password</p>
+                    </div>
 
-                <p>
-                    <input type="submit" id="deposite " (click)="deposite()" value="Deposite">
-                </p>
+                    <p>
+                        <input formControlName="amount" type="number" id="depo_amount" placeholder="Enter Your Amount"
+                            required>
+                    </p>
+                    <div class="div" *ngIf="this.logForm.get('amount')?.errors && this.logForm.get('amount')?.touched"
+                        style="color: red;">
+                        <p>Please Enter Amount Correctly</p>
+                    </div>
+
+
+                    <p>
+                        <input type="button" id="deposite " (click)="deposite()" value="Deposite">
+                    </p>
+                </form>
             </div>
             <div id="create-account-wrap">
             </div>
@@ -35,27 +56,45 @@
         </div>
 
     </div>
-    <div class="child">
+    <div class="child" [ngClass]="acno? 'style1':''">
         <div id="login-form-wrap">
             <h2>Withdraw</h2>
             <div id="login-form">
+                <form [formGroup]="widForm">
 
-                <p>
-                    <input [(ngModel)]="acno1" type="number" id="with_accno" placeholder=" Enter Your Account Number"
-                        required>
-                </p>
+                    <p>
+                        <input formControlName="acno1" type="text" id="with_accno"
+                            placeholder=" Enter Your Account Number" required>
+                    </p>
+                    <div class="div" *ngIf="this.widForm.get('acno1')?.errors && this.widForm.get('acno1')?.touched"
+                        style="color: red;">
+                        <p>Invalid Account Number</p>
+                    </div>
 
-                <p>
-                    <input [(ngModel)]="pswd1" type="password" id="with_Password" name="Password"
-                        placeholder=" Enter Your Password" required>
-                </p>
-                <p>
-                    <input [(ngModel)]="amount1" type="text" id="with_ammount" placeholder="Enter Your Amount" required>
-                </p>
 
-                <p>
-                    <input type="submit" id="Widthdraw " (click)="Withdraw()" value="Widthdraw">
-                </p>
+                    <p>
+                        <input formControlName="pswd1" type="password" id="with_Password" name="Password"
+                            placeholder=" Enter Your Password" required>
+                    </p>
+                    <div class="div" *ngIf="this.widForm.get('pswd1')?.errors && this.widForm.get('pswd1')?.touched"
+                        style="color: red;">
+                        <p>Invalid Password</p>
+                    </div>
+
+                    <p>
+                        <input formControlName="amount1" type="text" id="with_ammount" placeholder="Enter Your Amount"
+                            required>
+                    </p>
+                    <div class="div" *ngIf="this.widForm.get('amount1')?.errors && this.widForm.get('amount1')?.touched"
+                        style="color: red;">
+                        <p>Please Enter Amount Correctly</p>
+                    </div>
+
+
+                    <p>
+                        <input type="button" id="Widthdraw " (click)="Withdraw()" value="Widthdraw">
+                    </p>
+                </form>
             </div>
             <div id="create-account-wrap">
             </div>

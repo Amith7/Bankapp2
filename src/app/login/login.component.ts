@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 
@@ -15,10 +16,15 @@ export class LoginComponent implements OnInit {//3 execute
   acno = "";
   pswd = "";
   //dependency injection
-  constructor(private ds:DataService,private router:Router) { //1st execute
+  constructor( private fb: FormBuilder,private ds:DataService,private router:Router) { //1st execute
     //it automatically invokes when the object is created
     //object intaialization
   }
+  logForm = this.fb.group({//group
+    acno: ['',[Validators.required,Validators.pattern('[0-9]*')]],
+    pswd: ['',[Validators.required,Validators.pattern('[a-zA-Z0-9!@#$%*()]*')]],
+  })
+
 
   ngOnInit(): void {//2 execute
     //its a lifecycle hook of angular
@@ -34,8 +40,8 @@ export class LoginComponent implements OnInit {//3 execute
     console.log(this.pswd)
   }
   login() {
-    var acno = this.acno;
-    var pswd = this.pswd;
+    var acno = this.logForm.value.acno;
+    var pswd = this.logForm.value.pswd;
     var userDetails = this.ds.userDetails;
     const result = this.ds.login(acno,pswd)
     if(result){

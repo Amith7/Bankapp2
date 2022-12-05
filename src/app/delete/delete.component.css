@@ -1,0 +1,35 @@
+.btn1{
+    
+    background-color: rgb(37, 181, 26);
+    border-radius: 6px;
+    height: 50px;
+    width: 80px;
+    border: none;
+    color: #fff;
+    font-weight: 700;
+    margin-right: 15px;
+    text-align: center;
+
+  }
+  .btn{
+    /* float: left; */
+    background-color: rgb(223, 55, 22);
+    border-radius: 6px;
+    height: 50px;
+    width: 80px;
+    border: none;
+    color: #fff;
+    font-weight: 700;
+    text-align: center;
+
+    /* margin-right: 15px; */
+
+  }
+  .btn:hover {
+    background-color: red;
+  }
+  .btn1:hover {
+    background-color: green;
+  }
+
+

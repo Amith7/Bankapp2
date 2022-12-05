@@ -11,7 +11,32 @@ export class DataService {
 
 
 
-  constructor() { }
+  constructor() {
+    this.getDetails();
+   }
+  //saveDetails - to save data to the local storage
+  saveDetails(){
+    //DataBase
+    localStorage.setItem('DataBase',JSON.stringify(this.userDetails))
+    //currentUser
+    localStorage.setItem('CurrentUser',JSON.stringify(this.currentuser))
+    //currentAcno
+    localStorage.setItem('CurrentAccno',JSON.stringify(this.currentAcno))
+  }
+  getDetails(){
+    if(localStorage.getItem('DataBase')){
+      this.userDetails=JSON.parse(localStorage.getItem('DataBase') ||'');
+    }
+    if(localStorage.getItem('CurrentUser')){
+      this.currentuser=JSON.parse(localStorage.getItem('CurrentUser')|| '');
+    }
+    if(localStorage.getItem('CurrentAccno')){
+      this.currentAcno=JSON.parse(localStorage.getItem('CurrentAccno')|| '');
+    }
+   
+    
+
+  }
   userDetails: any = {
     1000: { acno: 1000, username: "amal", password: 1000, balance: 1000, transaction: [] },
     1001: { acno: 1001, username: "amala", password: 1001, balance: 1000, transaction: [] },
@@ -42,6 +67,8 @@ export class DataService {
       if (pswd == userDetails[acno]['password']) {
         this.currentuser = userDetails[acno]['username']
         this.currentAcno = acno;
+        this.saveDetails();
+
         return true;
       } else {
         return false
@@ -55,6 +82,7 @@ export class DataService {
   deposite(acno: any, pswd: any, amt: any) {
     var amount = parseInt(amt)
     let userDetails = this.userDetails;
+  
 
     if (acno in userDetails) {
       if (pswd == userDetails[acno]['password']) {
@@ -63,6 +91,7 @@ export class DataService {
           Type: 'credit',
           Amount: amount
         })
+        this.saveDetails();
         console.log(userDetails);
         return userDetails[acno]['balance']
       } else {
@@ -88,7 +117,7 @@ export class DataService {
             Type: 'debit',
             Amount: amount
           })
-
+          this.saveDetails();
           return userDetails[acno]['balance']
         }
         else {

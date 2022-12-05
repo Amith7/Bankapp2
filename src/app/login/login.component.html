@@ -2,15 +2,26 @@
     <h2>My Bank</h2>
     <h6>{{aim}}</h6>
     <div id="login-form">
+      <form  [formGroup]="logForm">
       <p>
-      <input  [(ngModel)]="acno" type="number" id="accno" [placeholder]="account" required>
+      <input  formControlName="acno" type="text" id="accno" [placeholder]="account" required>
       </p>
+      <div class="div" *ngIf="this.logForm.get('acno')?.errors && this.logForm.get('acno')?.touched" style="color: red;">
+        <p>Invalid Account Number</p> 
+     </div>
+
       <p>
-      <input  [(ngModel)]="pswd" type="password" id="Pswd" name="Password" placeholder="Enter Your Password Here" required>
+      <input  formControlName="pswd" type="password" id="Pswd" name="Password" placeholder="Enter Your Password Here" required>
       </p>
+      <div class="div" *ngIf="this.logForm.get('pswd')?.errors && this.logForm.get('pswd')?.touched" style="color: red;">
+        <p>Invalid  Password</p> 
+     </div>
+
+
       <p>
-      <input type="submit" id="login" value="Login" (click)="login()">
+      <input type="button" id="login" value="Login" (click)="login()">
       </p>
+    </form>
   </div>
     <div id="create-account-wrap">
       <p>Forgot Password? or <a routerLink="register">Sign Up</a><p>

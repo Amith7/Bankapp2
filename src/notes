@@ -51,6 +51,7 @@ Data sharing in both direction(ts->html  html->ts)
     a)Component Directives(Array Format)
     b)Structural Directives(table format)
       -> *ngfor
+      ->*ngIf
 
    6)Angular formsmodule
      a)template driven forms(first design the html template)
@@ -58,3 +59,15 @@ Data sharing in both direction(ts->html  html->ts)
        1)Reactive forms
           formgroup,array,control for advanced validation
           import from Reactive Forms module(in app.module.ts)
+    7)Local Storage
+      setItem-To store data in localstorage
+      getItem-To get data in localstorage
+      removeItem-To remove data in localstorage
+
+    8)Parent child communication
+      parent->child communication
+      child->parent communication
+
+      eg:
+      dashboard->parent
+      delete->child
